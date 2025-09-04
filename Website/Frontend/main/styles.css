@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: linear-gradient(135deg, #3E2723 0%, #5D4037 50%, #D7CCC8 50%, #BCAAA4 100%);
+    min-height: 100vh;
+}
+
+/* Estilos del libro */
+.book {
+    width: 400px;
+    height: 550px;
+    perspective: 1500px;
+    position: relative;
+    margin: 50px auto;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #8D6E63;
+    border-radius: 2px 15px 15px 2px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+    transform-origin: left center;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 20;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.book-cover h2 {
+    color: white;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 1rem;
+}
+
+.book-cover p {
+    color: #EFEBE9;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.book-cover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 30px;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+}
+
+.book-pages {
+    position: absolute;
+    width: 390px;
+    height: 540px;
+    top: 5px;
+    left: 5px;
+    background: #EFEBE9;
+    border-radius: 2px 15px 15px 2px;
+    overflow: hidden;
+    z-index: 10;
+    box-shadow: 
+        inset 5px 0 15px rgba(0,0,0,0.1),
+        0 0 0 1px rgba(0,0,0,0.1);
+}
+
+/* Estado abierto del libro */
+.book.open .book-cover {
+    transform: rotateY(-90deg) translateX(-5px);
+    box-shadow: 
+        -3px 3px 10px rgba(0,0,0,0.2),
+        0 0 0 1px rgba(0,0,0,0.1);
+}
+
+/* Páginas del libro */
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #EFEBE9;
+    display: none;
+    overflow-y: auto;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Tarjetas de autores */
+.author-card {
+    background: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.author-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.author-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #8D6E63;
+}
+
+/* Botón de cerrar libro */
+.close-book-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #8D6E63;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 30;
+}
+
+.close-book-btn:hover {
+    background: #6D4C41;
+    transform: translateX(-50%) scale(1.05);
+}
+
+/* Menú de disponibilidad */
+.availability-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+    z-index: 100;
+    display: none;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -40%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.availability-menu.active {
+    display: block;
+}
+
+.close-menu {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5D4037;
+    transition: transform 0.3s ease;
+}
+
+.close-menu:hover {
+    transform: rotate(90deg);
+}
+
+/* Plumas decorativas */
+.feather-pen {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    color: white;
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.pen1 {
+    top: 20%;
+    left: 15%;
+    transform: rotate(-30deg);
+}
+
+.pen2 {
+    bottom: 25%;
+    right: 15%;
+    transform: rotate(20deg);
+}
+
+/* Enlaces de navegación */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #8D6E63;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Etiquetas de libros */
+.bg-amber-100 {
+    background-color: #FFECB3;
+}
+.text-amber-800 {
+    color: #FF6F00;
+}
+.bg-green-100 {
+    background-color: #C8E6C9;
+}
+.text-green-800 {
+    color: #2E7D32;
+}
+.bg-red-100 {
+    background-color: #FFCDD2;
+}
+.text-red-800 {
+    color: #C62828;
+}

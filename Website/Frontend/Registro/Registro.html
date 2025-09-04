@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Litesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Style_registro.css">
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 md:p-8">
+    <div class="max-w-6xl w-full bg-white rounded-xl shadow-lg overflow-hidden md:flex md:h-[600px]">
+        <!-- Left Column - Branding & Visuals -->
+        <div class="hidden md:block md:w-2/5 relative overflow-hidden book-pattern">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#3E2723]/90 to-[#5D4037]/90"></div>
+            <div class="relative h-full flex flex-col justify-between p-10 text-white">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <a href="/main/index.html" class="flex items-center">
+                            <img src="/assets/Log.jpeg" alt="Litesia Logo" class="h-12 w-auto mr-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <span class="text-3xl font-bold text-white">Litesía</span>
+                        </a>
+                    </div>
+                    <p class="text-[#D7CCC8] text-lg">Donde cada página es una nueva aventura</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-[#5D4037] p-3 rounded-full mr-4">
+                            <i class="fas fa-truck text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Envíos rápidos</h3>
+                            <p class="text-[#D7CCC8]">Recibe tus libros en 24-48 horas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-[#5D4037] p-3 rounded-full mr-4">
+                            <i class="fas fa-star text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Club de lectura</h3>
+                            <p class="text-[#D7CCC8]">Acceso exclusivo a nuestro club</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-[#5D4037] p-3 rounded-full mr-4">
+                            <i class="fas fa-percent text-lg"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg">Descuentos</h3>
+                            <p class="text-[#D7CCC8]">15% de descuento en tu primera compra</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center text-[#D7CCC8] text-sm">
+                    <p>Ya somos más de 250,000 lectores</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column - Registration Form -->
+        <div class="w-full md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
+            <div class="md:hidden mb-8 text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <a href="/main/index.html" class="flex items-center">
+                        <img src="/assets/Log.jpeg" alt="Litesia Logo" class="h-12 w-auto mr-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <span class="text-3xl font-bold text-[#3E2723]">Litesía</span>
+                    </a>
+                </div>
+                <p class="text-[#5D4037]">Donde cada página es una nueva aventura</p>
+            </div>
+            
+            <div class="max-w-md mx-auto w-full">
+                <h2 class="text-3xl font-bold text-[#3E2723] mb-2">Crear cuenta</h2>
+                <p class="text-[#5D4037] mb-8">Únete a nuestra comunidad de lectores</p>
+                
+                <form id="registerForm" class="space-y-5">
+                    <!-- Full Name Field -->
+                    <div class="relative">
+                        <input type="text" id="fullname" name="fullname" class="w-full px-4 py-3 border border-[#D7CCC8] rounded-lg focus:outline-none input-field bg-[#EFEBE9]/30" placeholder=" " required>
+                        <label for="fullname" class="floating-label absolute left-4 top-3 text-[#5D4037] pointer-events-none">Nombre completo</label>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 hidden">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="fullname-error">Por favor ingresa tu nombre completo</p>
+                    </div>
+                    
+                    <!-- Username Field -->
+                    <div class="relative">
+                        <input type="text" id="username" name="username" class="w-full px-4 py-3 border border-[#D7CCC8] rounded-lg focus:outline-none input-field bg-[#EFEBE9]/30" placeholder=" " required>
+                        <label for="username" class="floating-label absolute left-4 top-3 text-[#5D4037] pointer-events-none">Nombre de usuario</label>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 hidden">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="username-error">Mínimo 3 caracteres</p>
+                    </div>
+                    
+                    <!-- Email Field -->
+                    <div class="relative">
+                        <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-[#D7CCC8] rounded-lg focus:outline-none input-field bg-[#EFEBE9]/30" placeholder=" " required>
+                        <label for="email" class="floating-label absolute left-4 top-3 text-[#5D4037] pointer-events-none">Correo electrónico</label>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3 hidden">
+                            <i class="fas fa-check-circle text-green-500"></i>
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="email-error">Ingresa un correo válido</p>
+                    </div>
+                    
+                    <!-- Password Field -->
+                    <div class="relative">
+                        <input type="password" id="password" name="password" class="w-full px-4 py-3 border border-[#D7CCC8] rounded-lg focus:outline-none input-field bg-[#EFEBE9]/30" placeholder=" " required>
+                        <label for="password" class="floating-label absolute left-4 top-3 text-[#5D4037] pointer-events-none">Contraseña</label>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <i class="fas fa-eye-slash text-[#5D4037]/60 cursor-pointer" id="togglePassword"></i>
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="password-error">Mínimo 8 caracteres</p>
+                    </div>
+                    
+                    <!-- Confirm Password Field -->
+                    <div class="relative">
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="w-full px-4 py-3 border border-[#D7CCC8] rounded-lg focus:outline-none input-field bg-[#EFEBE9]/30" placeholder=" " required>
+                        <label for="confirmPassword" class="floating-label absolute left-4 top-3 text-[#5D4037] pointer-events-none">Confirmar contraseña</label>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <i class="fas fa-eye-slash text-[#5D4037]/60 cursor-pointer" id="toggleConfirmPassword"></i>
+                        </div>
+                        <p class="text-red-500 text-xs mt-1 hidden" id="confirmPassword-error">Las contraseñas no coinciden</p>
+                    </div>
+                    
+                    <!-- Terms Checkbox -->
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5 mt-1">
+                            <input id="terms" name="terms" type="checkbox" class="w-4 h-4 border border-[#5D4037] rounded bg-[#EFEBE9] focus:ring-2 focus:ring-[#5D4037]">
+                        </div>
+                        <label for="terms" class="ml-3 text-sm text-[#5D4037]">
+                            Acepto los <a href="/Terminos y condiciones/Terminos.html" class="text-[#3E2723] font-semibold hover:underline">Términos y Condiciones</a> y la <a href="#" class="text-[#3E2723] font-semibold hover:underline">Política de Privacidad</a>
+                        </label>
+                    </div>
+                    <p class="text-red-500 text-xs mt-1 hidden" id="terms-error">Debes aceptar los términos y condiciones</p>
+                    
+                    <!-- Submit Button -->
+                    <button  src="/main/index.html"type="submit" class="w-full btn-primary text-white font-semibold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#5D4037] focus:ring-opacity-50">
+                        Crear cuenta
+                    </button>
+                    
+                    <!-- Login Link -->
+                    <p class="text-center text-sm text-[#5D4037]">
+                        ¿Ya tienes una cuenta? <a href="/login/Login.html" class="text-[#3E2723] font-semibold hover:underline">Inicia sesión</a>
+                    </p>
+                </form>
+                
+                <!-- Success Message (hidden by default) -->
+                <div id="successMessage" class="hidden success-message text-center py-8">
+                    <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-6">
+                        <i class="fas fa-check text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-[#3E2723] mb-3">¡Registro exitoso!</h3>
+                    <p class="text-[#5D4037] mb-8">Tu cuenta ha sido creada correctamente. Serás redirigido automáticamente.</p>
+                    <div class="w-full bg-[#D7CCC8] rounded-full h-2">
+                        <div class="bg-[#5D4037] h-2 rounded-full transition-all duration-300" id="progressBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts_registro.js">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Litesia - Librería Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Stile_catalogo.css">
+</head>
+<body class="bg-white font-sans text-gray-900">
+    <!-- Header Section -->
+    <header class="gradient-header text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center mb-4 md:mb-0">
+                    <a href="/main/index.html" class="flex items-center">
+                        <img src="/assets/Log.jpeg" alt="Litesia Logo" class="h-12 w-auto mr-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <span class="text-2xl md:text-3xl font-bold text-white">Litesia</span>
+                    </a>
+                </div>
+                
+                <nav class="flex items-center space-x-6">
+                    <a href="/main/index.html" class="hover:text-amber-200 transition">Inicio</a>
+                    <a href="/Shop/Catalogo.html" class="hover:text-amber-200 transition">Catálogo</a>
+                    <a href="/contacto/Contacto.html" class="hover:text-amber-200 transition">Contacto</a>
+                    <div class="relative">
+                        <button id="cart-button" class="relative">
+                            <i class="fas fa-shopping-cart text-2xl"></i>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-amber-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                    <a href="/login/Login.html" class="bg-amber-600 hover:bg-amber-700 px-4 py-2 rounded-md transition">Iniciar sesión</a>
+ 
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-amber-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">Descubre tu próxima gran lectura</h2>
+                    <p class="text-lg mb-6">En Litesia encontrarás los mejores libros de todos los géneros, desde clásicos hasta las últimas novedades.</p>
+                    <a href="#catalogo" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-md text-lg transition inline-block">Explorar catálogo</a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Libros apilados" class="rounded-lg shadow-xl max-w-full h-auto md:max-w-md">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Catalog Section -->
+    <section id="catalogo" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Nuestro Catálogo</h2>
+            
+            <!-- Genre Filters -->
+            <div class="flex flex-wrap justify-center mb-8 gap-2">
+                <button class="genre-filter px-4 py-2 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition" data-genre="todos">Todos</button>
+                <button class="genre-filter px-4 py-2 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition" data-genre="romance">Romance</button>
+                <button class="genre-filter px-4 py-2 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition" data-genre="historia">Historia</button>
+                <button class="genre-filter px-4 py-2 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition" data-genre="poesia">Poesía</button>
+                <button class="genre-filter px-4 py-2 rounded-full bg-amber-100 text-amber-800 hover:bg-amber-200 transition" data-genre="drama">Drama</button>
+            </div>
+            
+            <!-- Book Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="book-container">
+                <!-- Books will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Opiniones de nuestros clientes</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"La selección de libros en Litesia es increíble. Siempre encuentro lo que busco y la entrega es súper rápida."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold">María González</h4>
+                            <p class="text-sm text-gray-500">Compradora frecuente</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"Me encanta poder filtrar por género. He descubierto autores maravillosos gracias a las recomendaciones de Litesia."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold">Carlos Martínez</h4>
+                            <p class="text-sm text-gray-500">Amante de la poesía</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-amber-500 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4">"El carrito de compras es muy intuitivo y me gusta que guarda mis selecciones aunque cierre el navegador."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-semibold">Ana López</h4>
+                            <p class="text-sm text-gray-500">Lectora voraz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bloque de contacto -->
+    
+                      
+
+    <!-- Footer -->
+    <footer class="gradient-footer text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">Litesia</h3>
+                    <p class="max-w-xs">Tu librería online favorita con la mejor selección de libros para todos los gustos.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-semibold mb-3">Enlaces</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/main/index.html" class="hover:text-amber-200 transition">Inicio</a></li>
+                            <li><a href="/Shop/Catalogo.html" class="hover:text-amber-200 transition">Catálogo</a></li>
+                            <li><a href="/contacto/Contacto.html" class="hover:text-amber-200 transition">Contacto</a></li>
+                            <li><a href="/Terminos y condiciones/Terminos.html" class="hover:text-amber-200 transition">Términos y condiciones</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-3">Géneros</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-amber-200 transition">Romance</a></li>
+                            <li><a href="#" class="hover:text-amber-200 transition">Historia</a></li>
+                            <li><a href="#" class="hover:text-amber-200 transition">Poesía</a></li>
+                            <li><a href="#" class="hover:text-amber-200 transition">Drama</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold mb-3">Ayuda</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-amber-200 transition">Preguntas frecuentes</a></li>
+                            <li><a href="#" class="hover:text-amber-200 transition">Envíos y devoluciones</a></li>
+                            <li><a href="/Metodos de pago/metodo_pago.html" class="hover:text-amber-200 transition">Métodos de pago</a></li>
+                            <li><a href="#" class="hover:text-amber-200 transition">Privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-amber-700 mt-8 pt-6 text-center md:text-left">
+                <p>&copy; 2023 Litesia. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Panel del carrito de compras (oculto por defecto) -->
+    <div id="cart-panel" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-xl z-50 transform translate-x-full cart-panel overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold">Tu Carrito</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="cart-items" class="space-y-4 mb-6">
+                <!-- Los artículos del carrito se insertarán dinámicamente aquí -->
+                <p class="text-center text-gray-500 py-8" id="empty-cart-message">Tu carrito está vacío</p>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-4">
+                <div class="flex justify-between mb-2">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="flex justify-between mb-4">
+                    <span>Envío:</span>
+                    <span>Gratis</span>
+                </div>
+                <div class="flex justify-between font-bold text-lg">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                
+                <button id="checkout-button" class="w-full bg-amber-600 hover:bg-amber-700 text-white py-3 rounded-md mt-6 transition disabled:opacity-50" disabled>
+                    Proceder al pago
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Superposición para el panel del carrito (oculta de forma predeterminada) -->
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <script href="Scrpt_catalogo.js"></script>
+ 
+</body>
+</html>

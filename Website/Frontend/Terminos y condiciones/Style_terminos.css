@@ -1,0 +1,29 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333333;
+}
+h1, h2, h3 {
+    font-family: 'Merriweather', serif;
+    color: #6B4F4F;
+}
+.divider {
+    border-color: #6B4F4F;
+}
+.header-footer {
+    background-color: #3D2C2C;
+    color: white;
+}
+.section-bg-1 {
+    background-color: #F9F5F0;
+}
+.section-bg-2 {
+    background-color: #F0E6D2;
+}
+.accept-btn {
+    background-color: #6B4F4F;
+    transition: all 0.3s ease;
+}
+.accept-btn:hover {
+    background-color: #5a4141;
+    transform: translateY(-2px);
+}

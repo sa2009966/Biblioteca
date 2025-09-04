@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./Backend
+    container_name: library-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/library
+      - JWT_SECRET=your_jwt_secret
+    depends_on:
+      - mongo
+    networks:
+      - app-network
+
+  frontend:
+    build: ./Frontend
+    container_name: library-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:latest
+    container_name: library-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mongodb_data: 

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Litesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="Styles_pago.css">
+</head>
+<body class="bg-[#F5F0E6] min-h-screen font-sans text-[#2C2C2C]">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="mb-8">
+            <div class="bg-[#3D2B1C] text-white p-4 rounded-lg shadow-md">
+                <h1 class="text-2xl md:text-3xl font-bold">Litesia - Finalizar Compra</h1>
+                <p class="text-[#E0D5C8] mt-1">Complete su pedido de forma segura</p>
+            </div>
+        </header>
+
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Left Column - Payment Form -->
+            <div class="lg:w-2/3">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-bold mb-4 text-[#3D2B1C] border-b pb-2">Método de Pago</h2>
+                    
+                    <!-- Payment Methods -->
+                    <div class="space-y-4 mb-6">
+                        <div class="payment-method flex items-center p-4 border rounded-lg cursor-pointer hover:bg-[#F9F7F3] transition" data-method="card">
+                            <input type="radio" id="card" name="payment" class="h-5 w-5 text-[#6B4F3A] focus:ring-[#6B4F3A]" checked>
+                            <label for="card" class="ml-3 flex items-center w-full">
+                                <div class="card-icon bg-[#6B4F3A] text-white p-2 rounded-lg mr-3">
+                                    <i class="far fa-credit-card text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium">Tarjeta de crédito/débito</span>
+                                    <div class="flex mt-1">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visa/visa-original.svg" class="h-6 mr-2" alt="Visa">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mastercard/mastercard-original.svg" class="h-6 mr-2" alt="Mastercard">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" class="h-6" alt="Apple Pay">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method flex items-center p-4 border rounded-lg cursor-pointer hover:bg-[#F9F7F3] transition" data-method="transfer">
+                            <input type="radio" id="transfer" name="payment" class="h-5 w-5 text-[#6B4F3A] focus:ring-[#6B4F3A]">
+                            <label for="transfer" class="ml-3 flex items-center w-full">
+                                <div class="card-icon bg-[#6B4F3A] text-white p-2 rounded-lg mr-3">
+                                    <i class="fas fa-university text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium">Transferencia bancaria</span>
+                                    <p class="text-sm text-gray-500 mt-1">Recibirá instrucciones por email</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method flex items-center p-4 border rounded-lg cursor-pointer hover:bg-[#F9F7F3] transition" data-method="ewallet">
+                            <input type="radio" id="ewallet" name="payment" class="h-5 w-5 text-[#6B4F3A] focus:ring-[#6B4F3A]">
+                            <label for="ewallet" class="ml-3 flex items-center w-full">
+                                <div class="card-icon bg-[#6B4F3A] text-white p-2 rounded-lg mr-3">
+                                    <i class="fas fa-wallet text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium">E-wallet (PayPal, MercadoPago)</span>
+                                    <div class="flex mt-1">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/paypal/paypal-original.svg" class="h-6 mr-2" alt="PayPal">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/MercadoPago_Logo.png/640px-MercadoPago_Logo.png" class="h-6" alt="MercadoPago">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="payment-method flex items-center p-4 border rounded-lg cursor-pointer hover:bg-[#F9F7F3] transition" data-method="cash">
+                            <input type="radio" id="cash" name="payment" class="h-5 w-5 text-[#6B4F3A] focus:ring-[#6B4F3A]">
+                            <label for="cash" class="ml-3 flex items-center w-full">
+                                <div class="card-icon bg-[#6B4F3A] text-white p-2 rounded-lg mr-3">
+                                    <i class="fas fa-money-bill-wave text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-medium">Pago en efectivo al recoger</span>
+                                    <p class="text-sm text-gray-500 mt-1">Solo disponible para recogida en tienda</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Card Payment Form (shown by default) -->
+                    <div id="card-form" class="payment-form">
+                        <h3 class="text-lg font-semibold mb-4 text-[#3D2B1C]">Información de la Tarjeta</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label for="card-name" class="block text-sm font-medium text-gray-700 mb-1">Nombre en la tarjeta</label>
+                                <input type="text" id="card-name" class="w-full px-4 py-2 border rounded-lg focus:ring-[#6B4F3A] focus:border-[#6B4F3A]" placeholder="Como aparece en la tarjeta">
+                                <p id="card-name-error" class="text-red-500 text-sm mt-1 hidden">Por favor ingrese el nombre en la tarjeta</p>
+                            </div>
+                            
+                            <div>
+                                <label for="card-number" class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
+                                <div class="relative">
+                                    <input type="text" id="card-number" class="w-full px-4 py-2 border rounded-lg focus:ring-[#6B4F3A] focus:border-[#6B4F3A] card-number-input" placeholder="•••• •••• •••• ••••" maxlength="19">
+                                    <div id="card-type" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                </div>
+                                <p id="card-number-error" class="text-red-500 text-sm mt-1 hidden">Por favor ingrese un número de tarjeta válido</p>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="card-expiry" class="block text-sm font-medium text-gray-700 mb-1">Fecha de expiración (MM/AA)</label>
+                                    <input type="text" id="card-expiry" class="w-full px-4 py-2 border rounded-lg focus:ring-[#6B4F3A] focus:border-[#6B4F3A]" placeholder="MM/AA" maxlength="5">
+                                    <p id="card-expiry-error" class="text-red-500 text-sm mt-1 hidden">Por favor ingrese una fecha válida</p>
+                                </div>
+                                
+                                <div>
+                                    <label for="card-cvv" class="block text-sm font-medium text-gray-700 mb-1">Código de seguridad (CVV)</label>
+                                    <div class="relative">
+                                        <input type="password" id="card-cvv" class="w-full px-4 py-2 border rounded-lg focus:ring-[#6B4F3A] focus:border-[#6B4F3A]" placeholder="•••" maxlength="4">
+                                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" id="toggle-cvv">
+                                            <i class="far fa-eye-slash text-gray-400"></i>
+                                        </div>
+                                    </div>
+                                    <p id="card-cvv-error" class="text-red-500 text-sm mt-1 hidden">Por favor ingrese un CVV válido</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <input type="checkbox" id="save-card" class="h-4 w-4 text-[#6B4F3A] focus:ring-[#6B4F3A]">
+                                <label for="save-card" class="ml-2 block text-sm text-gray-700">Guardar esta tarjeta para futuras compras</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transfer Form (hidden by default) -->
+                    <div id="transfer-form" class="payment-form hidden">
+                        <div class="bg-[#F9F7F3] p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2 text-[#3D2B1C]">Transferencia Bancaria</h3>
+                            <p class="text-gray-700 mb-4">Recibirá un correo electrónico con las instrucciones para completar el pago mediante transferencia bancaria.</p>
+                            <div class="bg-white p-3 rounded border">
+                                <p class="font-medium">Banco: Banco Nacional</p>
+                                <p class="text-sm">Titular: Litesia S.A.</p>
+                                <p class="text-sm">CBU: 1234567890123456789012</p>
+                                <p class="text-sm">Alias: LITESIA.LIBROS</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- E-wallet Form (hidden by default) -->
+                    <div id="ewallet-form" class="payment-form hidden">
+                        <div class="bg-[#F9F7F3] p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2 text-[#3D2B1C]">Pago con E-wallet</h3>
+                            <p class="text-gray-700 mb-4">Será redirigido al proveedor de pago seleccionado para completar la transacción.</p>
+                            <div class="flex space-x-4">
+                                <button class="bg-[#253B80] text-white px-4 py-2 rounded-lg flex items-center">
+                                    <i class="fab fa-paypal mr-2"></i> Pagar con PayPal
+                                </button>
+                                <button class="bg-[#009EE3] text-white px-4 py-2 rounded-lg flex items-center">
+                                    <i class="fas fa-wallet mr-2"></i> Pagar con MercadoPago
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cash Form (hidden by default) -->
+                    <div id="cash-form" class="payment-form hidden">
+                        <div class="bg-[#F9F7F3] p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2 text-[#3D2B1C]">Pago en Efectivo</h3>
+                            <p class="text-gray-700 mb-4">Podrá pagar en efectivo al recoger su pedido en nuestra tienda física.</p>
+                            <div class="bg-white p-3 rounded border">
+                                <p class="font-medium">Dirección de la tienda:</p>
+                                <p class="text-sm">Av. Libros 1234, Local 56</p>
+                                <p class="text-sm">Horario: Lunes a Viernes 10:00 - 20:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shipping Info -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-bold mb-4 text-[#3D2B1C] border-b pb-2">Información de Envío</h2>
+                    <div class="space-y-3">
+                        <p class="font-medium">Enviar a: <span class="font-normal">Juan Pérez, Av. Siempreviva 742, CABA</span></p>
+                        <p class="font-medium">Método: <span class="font-normal">Envío estándar (3-5 días hábiles)</span></p>
+                        <p class="font-medium">Costo de envío: <span class="font-normal">$890</span></p>
+                        <button class="text-[#6B4F3A] hover:text-[#3D2B1C] font-medium text-sm">Cambiar dirección</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Order Summary -->
+            <div class="lg:w-1/3">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-4">
+                    <h2 class="text-xl font-bold mb-4 text-[#3D2B1C] border-b pb-2">Resumen del Pedido</h2>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="flex items-start">
+                            <img src="https://m.media-amazon.com/images/I/51xwGSNX-EL._SY425_.jpg" alt="El Principito" class="w-16 h-24 object-cover rounded mr-4">
+                            <div>
+                                <h3 class="font-medium">El Principito</h3>
+                                <p class="text-sm text-gray-500">Antoine de Saint-Exupéry</p>
+                                <p class="text-sm mt-1">Cantidad: 1</p>
+                                <p class="font-medium mt-1">$2,499</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <img src="https://m.media-amazon.com/images/I/51RlqfADKAL._SY425_.jpg" alt="Cien años de soledad" class="w-16 h-24 object-cover rounded mr-4">
+                            <div>
+                                <h3 class="font-medium">Cien años de soledad</h3>
+                                <p class="text-sm text-gray-500">Gabriel García Márquez</p>
+                                <p class="text-sm mt-1">Cantidad: 1</p>
+                                <p class="font-medium mt-1">$3,299</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-t pt-4 space-y-2">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span>$5,798</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Envío</span>
+                            <span>$890</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-lg mt-2">
+                            <span>Total</span>
+                            <span class="text-[#3D2B1C]">$6,688</span>
+                        </div>
+                    </div>
+                    
+                    <button id="pay-button" class="w-full mt-6 bg-[#6B4F3A] hover:bg-[#3D2B1C] text-white py-3 px-4 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-lock mr-2"></i> Pagar Ahora
+                    </button>
+                    
+                    <p class="text-xs text-gray-500 mt-3 text-center">
+                        <i class="fas fa-shield-alt mr-1"></i> Pago seguro con encriptación SSL
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-green-500 text-3xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-[#3D2B1C] mb-2">¡Pago Exitoso!</h3>
+                <p class="text-gray-700 mb-6">Gracias por su compra en Litesia. Su pedido ha sido procesado correctamente.</p>
+                
+                <div class="bg-[#F9F7F3] p-4 rounded-lg mb-6 text-left">
+                    <p class="font-medium">Número de pedido: <span class="font-normal">#LT-2023-05678</span></p>
+                    <p class="font-medium mt-1">Total pagado: <span class="font-normal">$6,688</span></p>
+                    <p class="font-medium mt-1">Fecha estimada de entrega: <span class="font-normal">15 de Noviembre, 2023</span></p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <button id="continue-shopping" class="flex-1 bg-[#6B4F3A] hover:bg-[#3D2B1C] text-white py-2 px-4 rounded-lg font-medium transition duration-300">
+                        Seguir Comprando
+                    </button>
+                    <button id="view-order" class="flex-1 border border-[#6B4F3A] text-[#6B4F3A] hover:bg-[#F9F7F3] py-2 px-4 rounded-lg font-medium transition duration-300">
+                        Ver Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts_pago.js">
+       
+    </script>
+</body>
+</html>
